@@ -54,7 +54,7 @@ if(isset($_POST['accio'])){
 		
 	}
 }elseif(isset($_GET['accio'])){
-	if($_GET['accio']=="nou" and $_GET['permis']=="oriol"){
+	if($_GET['accio']=="nou" and $_GET['permis']==$permis_user){
 ?>
 <h1>Crear usuari</h1>
 <h2>Creant-te un usuari <u>acceptes</u> l'ús de Cookies. Pel simple fet de navegar per aquí no en tindràs, només al crear un usuari.<br>No són ni publicitat, ni estadístiques, ni res d'això. Senzillament per recordar qui ets i mantenir-te la sessió oberta.</h2>
