@@ -1,11 +1,12 @@
 <?php
 	include_once("piscina_funcionsAdmin.php");
-	include_once("piscina_funcions.php");
 	piscina_cookies($_COOKIE);
+	include_once("piscina_funcions.php");
 ?>
 <html>
 <?php piscinaHead("Usuaris"); ?>
 <body>
+<?php piscinaHeadUser($sessio); ?>
 <?php 
 if(isset($_POST['accio'])){
 	if($_POST['accio']=="nou_user"){

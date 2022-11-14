@@ -1,5 +1,4 @@
 <?php
-
 function piscinaHead($titol){
 ?>
 <head>
@@ -13,12 +12,23 @@ function piscinaHead($titol){
 <?php
 }
 
-function piscinaHeadUser(){
+function piscinaHeadUser($sessio){
 ?>
 <div class="head_user">
+    <span class="head_user" id="inici"><a class="dissimulat" href="/piscina"><i class="fa-solid fa-house"></i></a></span>
+<?php
+    if($sessio){
+?>
     <span class="head_user"><i class="fa-regular fa-bell"></i></span>
-    <span class="head_user"><a href="usuari.php?accio=log_in" class="dissimulat"><i class='fas'>&#xf406;</i></a></span></div>
+    <span class="head_user"><a href="usuari.php?accio=personal" class="dissimulat"><i class="fa-solid fa-user"></i></a></span>
+<?php
+    }else{
+?>
+    <span class="head_user"><a href="usuari.php?accio=log_in" class="dissimulat"><i class="fa-regular fa-user"></i></a></span>
+<?php
+    }
+?>
+</div>
 <?php
 }
-
 ?>
