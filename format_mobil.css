@@ -1,0 +1,111 @@
+body {
+	background: #00ffff;
+	background-image: url("img/fons_aigua.jpg");
+	background-size: 100%;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+h1,h2,h3 {
+	text-align: center;
+}
+
+div.boto_inici {
+	border: 2px solid black;
+	border-radius: 30px;
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+div#estat {
+	background-color: red;
+}
+
+div#control {
+	background-color: green;
+}
+
+table.centre {
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+a.dissimulat:link {
+	text-decoration: none;
+	color: black;
+}
+
+a.dissimulat:visited {
+	text-decoration: none;
+	color: black;
+}
+
+a.dissimulat:hover {
+	text-decoration: underline;
+	color: red;
+}
+
+ul#header {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #c57000;
+}
+li#header {
+	float: left;
+	margin-right: 2px;
+	margin-left: 2px;
+	font-size: 20px;
+}
+
+li a, .desplega_boto {
+	display: inline-block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+li.desplegable {
+	display: inline-block;
+}
+
+.desplega_content {
+	display: none;
+	position: absolute;
+	background-color: #c57000;
+	font-size: 18px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	border-style: solid;
+	border-width: 1px;
+	border-top-width: 2px;
+}
+.desplega_content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+.desplegable:hover .desplega_content {
+	display: block;
+}
+
+div.left{
+	max-width: 50%;
+	position: absolute;
+	right: 50%;
+}
+div.right{
+	max-width: 50%;
+	position: absolute;
+	left: 50%;
+}
+span.enllaç{
+	color: blue;
+	text-decoration: underline;
+}

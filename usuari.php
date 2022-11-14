@@ -1,5 +1,5 @@
 <?php
-	include_once("piscina_funcions.php");
+	include_once("piscina_funcionsAdmin.php");
 	piscina_cookies($_COOKIE);
 
 if(isset($_POST['accio'])){
