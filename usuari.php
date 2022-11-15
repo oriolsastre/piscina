@@ -116,7 +116,7 @@ if(isset($_POST['accio'])){
 	setcookie("usuari",null,-1,"/");
 	session_destroy();
 ?>
-	<meta http-equiv="refresh" content="0; url=inici.php" />
+	<meta http-equiv="refresh" content="0; url=/piscina" />
 <?php
 	}elseif($_GET['accio']=="personal"){
 ?>
@@ -131,6 +131,7 @@ if(isset($_POST['accio'])){
 			<td><?php echo $_SESSION['desde']; ?></td>
 		</tr>
 	</table>
+	<a href="usuari.php?accio=log_out"><input type="button" value="Tancar Sessió"></a>
 <?php
 	}
 }else{

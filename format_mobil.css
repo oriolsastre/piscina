@@ -11,6 +11,11 @@ h1,h2,h3 {
 	text-align: center;
 }
 
+h1.principal {
+	text-shadow: 2px 0 #0ff, -2px 0 #0ff, 0 2px #0ff, 0 -2px #0ff,
+	1px 1px #0ff, -1px -1px #0ff, 1px -1px #0ff, -1px 1px #0ff;
+}
+
 div.head_user {
 	width: 100%;
 	text-align: right;
@@ -126,6 +131,33 @@ table.centre {
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+div.avisTemporal {
+	border: 3px solid red;
+	border-radius: 10px;
+	background-color: #00ffff80;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 0px;
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+div.tancar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 10px;
+	z-index: 1;
+	cursor: pointer;
+}
+
+.avisTemporal h2 {
+	margin-bottom: -10px;
+	text-shadow: 2px 0 #f00, -2px 0 #f00, 0 2px #f00, 0 -2px #f00,
+	1px 1px #f00, -1px -1px #f00, 1px -1px #f00, -1px 1px #f00;
 }
 
 a.dissimulat:link {

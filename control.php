@@ -4,11 +4,55 @@ piscina_cookies($_COOKIE);
 include_once("piscina_funcions.php");
 ?>
 <html>
-<?php piscinaHead("Estat de l'aigua"); ?>
+<?php
+if(!$sessio){ ?>
+<meta http-equiv="refresh" content="0; url=/piscina" />
+<?php
+exit();
+}elseif(isset($_GET['form']) AND $_GET['form']=='add'){
+    if(!isset($_POST['data_hora'])){$data_hora = date("Y-m-d H:i:s");}else{$data_hora=$_POST['data_hora'];}
+    if(!isset($_POST['pH'])){$pH = 'NULL';}else{$pH = $_POST['pH'];}
+    if(!isset($_POST['clor'])){$clor = 'NULL';}else{$clor = $_POST['clor'];}
+    if(!isset($_POST['alcali'])){$alcali = 'NULL';}else{$alcali = $_POST['alcali'];}
+    if(!isset($_POST['temperatura'])){$temperatura = 'NULL';}else{$temperatura = $_POST['temperatura'];}
+    if(!isset($_POST['transparent'])){$transparent = 'NULL';}else{$transparent = $_POST['transparent'];}
+    if(!isset($_POST['fons'])){$fons = 'NULL';}else{$fons = $_POST['fons'];}
+
+    if($pH != 'NULL' OR $clor != 'NULL'){
+        $sql_ultim_clorpH = "SELECT data_hora FROM piscinaControl WHERE clor IS NOT NULL OR ph IS NOT NULL ORDER BY data_hora DESC LIMIT 1";
+        $qry_ultim_clorpH = mysqli_query($dbcnx, $sql_ultim_clorpH);
+        $ultim_clorpH = new DateTime(mysqli_fetch_array($qry_ultim_clorpH)[0]);
+        $clorpH_diff = $ultim_clorpH->diff(new DateTime($data_hora));
+        $horesClorPh = intval($clorpH_diff->format('%h'));
+    }
+
+    $sql_insert_control = "INSERT INTO piscinaControl SET
+        data_hora = '$data_hora',
+        ph = $pH, clor = $clor, alcali = $alcali,
+        temperatura = $temperatura, transparent = $transparent, fons = $fons,
+        usuari = ".$_SESSION['userID'].";";
+    
+    if($horesClorPh>6){
+        mysqli_query($dbcnx, $sql_insert_control);
+        $avisTemporal=false;
+    }else{$avisTemporal = true;}
+}
+piscinaHead("Estat de l'aigua"); ?>
 <body>
 <?php piscinaHeadUser($sessio); ?>
 <div style="text-align: center; margin-left: auto; margin-right:auto;">
-    <h1>Estat de l'aigua</h1>
+    <h1 class="principal">Estat de l'aigua</h1>
+<?php
+    if($avisTemporal){
+?>
+    <div class="avisTemporal" id="avisTemporal">
+        <div class="tancar" onmouseup="document.getElementById('avisTemporal').style.display = 'none'"><i class="fa-solid fa-circle-xmark" style="color:red;"></i></div>
+        <h2>Avís</h2>
+        <p>No s'han afegit les dades ja que fa menys de 6 hores que s'han intruoduït dades sobre Clor i pH.</p>
+    </div>
+<?php
+    }
+?>
     <table class="control">
         <tr>
             <td style="width: 50%;">
@@ -30,7 +74,7 @@ include_once("piscina_funcions.php");
     </table>
     <div class="form" id="formPHClor" style="display: none;">
         <h3>Control de Clor i pH</h3>
-        <form method="post" action="">
+        <form method="post" action="control.php?form=add">
             <table class="formTable">
                 <tr>
                     <td><b>pH<b></td>
@@ -65,7 +109,7 @@ include_once("piscina_funcions.php");
     </div>
     <div class="form" id="formAigua" style="display: none;">
         <h3>Temperatura, transparència i fons</h3>
-        <form method="post" action="">
+        <form method="post" action="control.php?form=add">
             <table class="formTable">
                 <tr>
                     <td><b>Temperatura de l'aigua</b></td>
