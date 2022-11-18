@@ -84,7 +84,7 @@ div.controlText {
 	align-items: center;
 	justify-content: center;
 }
-.controlText h2 {
+.controlText h1,h2 {
 	text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
 	1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
@@ -107,12 +107,56 @@ div#aigua {
 	background-size: 100%;
 }
 
+div#phmes {
+	background-image: url(img/phmes.jpg);
+	background-size: 66%;
+	background-position: center; 
+	background-repeat: no-repeat;
+}
+
+div#phmenys {
+	background-image: url(img/phmenys.jpg);
+	background-size: 66%;
+	background-position: center; 
+	background-repeat: no-repeat;
+}
+div#clor {
+	background-image: url(img/clor.jpg);
+	background-size: 66%;
+	background-position: center; 
+	background-repeat: no-repeat;
+}
+div#antialga {
+	background-image: url(img/antialga.jpg);
+	background-size: 66%;
+	background-position: center; 
+	background-repeat: no-repeat;
+}
+div#alcali {
+	background-image: url(img/alka.jpg);
+	background-size: 66%;
+	background-position: center; 
+	background-repeat: no-repeat;
+}
+div#fluoculant {
+	background-image: url(img/fluoculant.jpg);
+	background-size: 66%;
+	background-position: center; 
+	background-repeat: no-repeat;
+}
+
 table.control{
 	border: none;
 	border-collapse: collapse;
 	width: 100%;
 	text-align: center;
 	margin-bottom: 10px;
+}
+
+table#accio {
+	background-image: url(img/prestatge.jpg);
+	background-size: 100%;
+	border-radius: 20px;
 }
 
 table.formTable {

@@ -45,8 +45,8 @@ piscinaHead("Estat de l'aigua"); ?>
 <?php
     if($avisTemporal){
 ?>
-    <div class="avisTemporal" id="avisTemporal">
-        <div class="tancar" onmouseup="document.getElementById('avisTemporal').style.display = 'none'"><i class="fa-solid fa-circle-xmark" style="color:red;"></i></div>
+    <div class="avisTemporal">
+        <div class="tancar" onmouseup="this.parentElement.style.display = 'none'"><i class="fa-solid fa-circle-xmark" style="color:red;"></i></div>
         <h2>Avís</h2>
         <p>No s'han afegit les dades ja que fa menys de 6 hores que s'han intruoduït dades sobre Clor i pH.</p>
     </div>
@@ -56,17 +56,17 @@ piscinaHead("Estat de l'aigua"); ?>
     <table class="control">
         <tr>
             <td style="width: 50%;">
-                <div class="control" id="pHClor" onmouseup=" document.getElementById('formPHClor').style.display = ''; document.getElementById('formAigua').style.display = 'none';">
+                <div class="control" id="pHClor" onmouseup="document.getElementById('formPHClor').style.display = ''; document.getElementById('formAigua').style.display = 'none';">
                     <div class="controlText"><h2>pH i Clor</h2></div>
                 </div>
             </td><td>
-                <div class="control" id="aigua" onmouseup=" document.getElementById('formPHClor').style.display = 'none'; document.getElementById('formAigua').style.display = '';">
+                <div class="control" id="aigua" onmouseup="document.getElementById('formPHClor').style.display = 'none'; document.getElementById('formAigua').style.display = '';">
                     <div class="controlText"><h2>Temperatura, transparència, fons</h2></div>
                 </div>
             </td>
         </tr><tr>
             <td colspan="2">
-                <div class="control" id="total" onmouseup=" document.getElementById('formPHClor').style.display = 'none'; document.getElementById('formAigua').style.display = 'none';">
+                <div class="control" id="total" onmouseup="document.getElementById('formPHClor').style.display = 'none'; document.getElementById('formAigua').style.display = 'none';">
                     <div class="controlText"><h2>Control múltiple</h2></div>
                 </div>
             </td>
