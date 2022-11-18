@@ -17,6 +17,7 @@ h1.principal {
 }
 
 div.head_user {
+	position: sticky;
 	width: 100%;
 	text-align: right;
 	letter-spacing: 0.7em;
@@ -25,6 +26,8 @@ div.head_user {
 	background-color: #00ffff50;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	top: 10px;
+	z-index: 10;
 }
 span.head_user {
 	margin-right: 10px;

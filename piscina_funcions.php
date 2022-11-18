@@ -19,7 +19,7 @@ function piscinaHeadUser($sessio){
 <?php
     if($sessio){
 ?>
-    <span class="head_user"><i class="fa-regular fa-bell"></i></span>
+    <span class="head_user"><a class="dissimulat" href="alerta.php"><i class="fa-regular fa-bell"></i></a></span>
     <!-- <span class="head_user"><i class="fa-solid fa-bell fa-beat" style="color:red; --fa-animation-duration: 2s;"></i></span>-->
     <span class="head_user"><a href="usuari.php?accio=personal" class="dissimulat"><i class="fa-solid fa-user"></i></a></span>
 <?php
