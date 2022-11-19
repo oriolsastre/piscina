@@ -34,23 +34,7 @@ $llistaControls = array(
 <?php piscinaHead("Acció sobre la piscina"); ?>
 <body>
 <?php piscinaHeadUser($sessio); ?>
-<script>
-    var accioActivada = {pHmes: 0, pHmenys: 0, clor: 0, antialga: 0, fluoculant: 0, aspirar: 0, alcali: 0, aglutinant: 0};
-    const accioFunc = (id) => {
-        document.getElementById('formAccio').style.display = '';
-        if(accioActivada[id]==0){
-            document.getElementById(`${id}Form`).style.display = '';
-            document.getElementById(`${id}Valor`).value='1';
-            document.getElementById(id).style.opacity='0.5';
-            accioActivada[id]=1;
-        }else{
-            document.getElementById(id+'Form').style.display = 'none';
-            document.getElementById(id+'Valor').value='0';
-            document.getElementById(id).style.opacity='1';
-            accioActivada[id]=0;
-        }
-    }
-</script>
+<script src="accio.js"></script>
 <div style="text-align: center; margin-left: auto; margin-right:auto;">
     <h1 class="principal">Acció sobre la piscina</h1>
     <table class="control" id="accio">
@@ -73,14 +57,15 @@ $llistaControls = array(
     foreach($llistaControls as $i => $control){
 ?>
             <div id="<?php echo $control[0] ?>Form" style="position:relative; display: none;">
-                <div class="tancar" onmouseup="this.parentElement.style.display = 'none';document.getElementById('<?php echo $control[0] ?>Valor').value='null';document.getElementById('<?php echo $control[0] ?>').style.opacity='1'"><i class="fa-solid fa-circle-xmark"></i></div>
+                <div class="tancar" onmouseup="accioFunc('<?php echo $control[0]; ?>')"><i class="fa-solid fa-circle-xmark"></i></div>
                 <p><br><?php echo $control[2] ?></p>
                 <input type="hidden" id="<?php echo $control[0] ?>Valor" name="<?php echo $control[0] ?>" value="null">
             </div>
 <?php
     }
 ?>
-            <input type="submit" value="Enviar">
+            <div id="avisPh" style="display:none; color:red;"><b>No pugis i baixis el pH alhora!</b></div>
+            <input type="submit" value="Enviar" id="enviarForm">
             <input type="button" value="Cancelar" onmouseup="document.getElementById('formAccio').style.display = 'none';">
         </form>
     </div>
