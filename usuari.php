@@ -6,7 +6,7 @@
 <html>
 <?php piscinaHead("Usuaris"); ?>
 <body>
-<?php piscinaHeadUser($sessio); ?>
+<?php piscinaHeadUser(); ?>
 <?php 
 if(isset($_POST['accio'])){
 	if($_POST['accio']=="nou_user"){

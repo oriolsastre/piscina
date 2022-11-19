@@ -33,7 +33,7 @@ $llistaControls = array(
 <html>
 <?php piscinaHead("Acció sobre la piscina"); ?>
 <body>
-<?php piscinaHeadUser($sessio); ?>
+<?php piscinaHeadUser(); ?>
 <script src="accio.js"></script>
 <div style="text-align: center; margin-left: auto; margin-right:auto;">
     <h1 class="principal">Acció sobre la piscina</h1>

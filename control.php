@@ -39,7 +39,7 @@ exit();
 }
 piscinaHead("Estat de l'aigua"); ?>
 <body>
-<?php piscinaHeadUser($sessio); ?>
+<?php piscinaHeadUser(); ?>
 <div style="text-align: center; margin-left: auto; margin-right:auto;">
     <h1 class="principal">Estat de l'aigua</h1>
 <?php

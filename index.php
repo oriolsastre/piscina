@@ -6,7 +6,7 @@ include_once("piscina_funcions.php");
 <html>
 <?php piscinaHead("Control de la piscina"); ?>
 <body>
-<?php piscinaHeadUser($sessio); ?>
+<?php piscinaHeadUser(); ?>
     <h1 class="principal">PISCINA</h1>
     <div>
         <!-- <div class="boto_inici" id="estat"><h2><a href="estat.php" class="dissimulat">ESTAT DE LA PISCINA</a></h2></div> -->

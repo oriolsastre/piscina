@@ -12,15 +12,20 @@ function piscinaHead($titol){
 <?php
 }
 
-function piscinaHeadUser($sessio){
+function piscinaHeadUser(){
 ?>
 <div class="head_user">
     <span class="head_user" id="inici"><a class="dissimulat" href="/piscina"><i class="fa-solid fa-house"></i></a></span>
 <?php
-    if($sessio){
+    if(isset($_SESSION['userID'])){
+        $alertes = alertes();
 ?>
-    <span class="head_user"><a class="dissimulat" href="alerta.php"><i class="fa-regular fa-bell"></i></a></span>
-    <!-- <span class="head_user"><i class="fa-solid fa-bell fa-beat" style="color:red; --fa-animation-duration: 2s;"></i></span>-->
+    <span class="head_user"><a class="dissimulat" href="alerta.php"><?php
+        if($alertes[0]){
+?><i class="fa-solid fa-bell fa-beat" style="color:red; --fa-animation-duration: 2s;"></i><?php
+        }else{
+?><i class="fa-regular fa-bell"></i><?php
+        } ?></a></span>
     <span class="head_user"><a href="usuari.php?accio=personal" class="dissimulat"><i class="fa-solid fa-user"></i></a></span>
 <?php
     }else{
@@ -31,5 +36,22 @@ function piscinaHeadUser($sessio){
 ?>
 </div>
 <?php
+return $alertes;
+}
+
+function alertes(){
+    $alertes = array(
+        false,
+        array(
+            "antialga" => false,
+        )
+    );
+    $sql_alerta_antialga = "SELECT DATEDIFF(CURDATE(),data_hora) FROM piscinaAccio WHERE antialga IS NOT NULL ORDER BY data_hora DESC LIMIT 1;";
+    $qry_alerta_antialga = mysqli_query($_SESSION['DB'], $sql_alerta_antialga);
+    $alerta_antialga = mysqli_fetch_array($qry_alerta_antialga)[0];
+    if($alerta_antialga>7){$alertes[0]=true;$alertes[1]["antialga"]=true;}
+
+    return $alertes;
+
 }
 ?>
