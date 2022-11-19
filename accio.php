@@ -19,43 +19,53 @@ if(!$sessio){ ?>
     $qry_inser_accio = mysqli_query($dbcnx, $sql_insert_accio);
 }
 include_once("piscina_funcions.php");
+$llistaControls = array(
+    0 => array("pHmes","pH+", "He apujat el pH."),
+    1 => array("pHmenys","pH-", "He abaixat el pH"),
+    2 => array("clor","Clor", "He afegit clor."),
+    3 => array("antialga","Antialgues", "He afegit la dosi setmanal d'antialgues."),
+    4 => array("fluoculant","Fluoculant", "He afegit fluoculant."),
+    5 => array("aspirar","Aspirar el fons", "He aspirat el fons."),
+    6 => array("alcali", "Alka+", "He posat Alka+"),
+    7 => array("aglutinant", "Aglutinant", "He afegit aglutinant.")
+);
 ?>
 <html>
 <?php piscinaHead("Acció sobre la piscina"); ?>
 <body>
 <?php piscinaHeadUser($sessio); ?>
+<script>
+    var accioActivada = {pHmes: 0, pHmenys: 0, clor: 0, antialga: 0, fluoculant: 0, aspirar: 0, alcali: 0, aglutinant: 0};
+    const accioFunc = (id) => {
+        document.getElementById('formAccio').style.display = '';
+        if(accioActivada[id]==0){
+            document.getElementById(`${id}Form`).style.display = '';
+            document.getElementById(`${id}Valor`).value='1';
+            document.getElementById(id).style.opacity='0.5';
+            accioActivada[id]=1;
+        }else{
+            document.getElementById(id+'Form').style.display = 'none';
+            document.getElementById(id+'Valor').value='0';
+            document.getElementById(id).style.opacity='1';
+            accioActivada[id]=0;
+        }
+    }
+</script>
 <div style="text-align: center; margin-left: auto; margin-right:auto;">
     <h1 class="principal">Acció sobre la piscina</h1>
     <table class="control" id="accio">
 <?php
-    $llistaControls = array(
-        0 => array("pHmes","pH+", "He apujat el pH."),
-        1 => array("pHmenys","pH-", "He abaixat el pH"),
-        2 => array("clor","Clor", "He afegit clor."),
-        3 => array("antialga","Antialgues", "He afegit la dosi setmanal d'antialgues."),
-        4 => array("fluoculant","Fluoculant", "He afegit fluoculant."),
-        5 => array("aspirar","Aspirar el fons", "He aspirat el fons."),
-        6 => array("alcali", "Alka+", "He posat Alka+"),
-        7 => array("aglutinant", "Aglutinant", "He afegit aglutinant.")
-    );
     foreach($llistaControls as $i => $control){
         if($i%2==0){echo "<tr>";}
 ?>
             <td style="width: 50%;">
-                <div class="control" id="<?php echo $control[0] ?>" onmouseup="document.getElementById('formAccio').style.display = '';document.getElementById('<?php echo $control[0] ?>Form').style.display = ''; document.getElementById('<?php echo $control[0] ?>Valor').value='1';this.style.opacity='0.5'">
+                <div class="control" id="<?php echo $control[0]; ?>" onmouseup="accioFunc('<?php echo $control[0]; ?>')">
                     <div class="controlText"><h1><?php echo $control[1]; ?></h1></div>
                 </div>
             </td>
 <?php
         if($i%2==1){echo "</tr>";}
     } ?>
-        <!-- <tr>
-            <td colspan="2">
-                <div class="control" id="total" onmouseup="">
-                    <div class="controlText"><h2>Control múltiple</h2></div>
-                </div>
-            </td>
-        </tr> -->
     </table>
     <div class="form" id="formAccio" style="display: none;">
         <form method="post" action="accio.php?form=add">
