@@ -1,6 +1,11 @@
 <?php
 include_once("piscina_funcionsAdmin.php");
 piscina_cookies($_COOKIE);
+if(!$sessio){ ?>
+    <meta http-equiv="refresh" content="0; url=/piscina" />
+<?php
+    exit();
+}
 include_once("piscina_funcions.php");
 ?>
 <html>

@@ -15,7 +15,8 @@ function piscinaHead($titol){
 function piscinaHeadUser(){
 ?>
 <div class="head_user">
-    <span class="head_user" id="inici"><a class="dissimulat" href="/piscina"><i class="fa-solid fa-house"></i></a></span>
+    <span class="head_user" id="inici"><a class="dissimulat" href="/piscina"><i class="fa-solid fa-house"></i></a>
+    <a class="dissimulat" href="calculadora.php"><i class="fa-solid fa-calculator"></i></a></span>
 <?php
     if(isset($_SESSION['userID'])){
         $alertes = alertes();
