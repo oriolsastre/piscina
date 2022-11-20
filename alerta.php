@@ -14,7 +14,10 @@ include_once("piscina_funcions.php");
 ?>
     <div class="alertaUrgent">
         <ul>
-<?php if($alertes[1]["antialga"]){echo "<li>Fa més d'una setmana de l'última dosi d'antialgues.</li>";} ?>
+<?php if($alertes[1]["antialga"][0]){echo "<li>Fa més d'una setmana de l'última dosi d'antialgues.</li>";}
+      if($alertes[1]["pHmenys"][0]){echo "<li>El pH està baix i no s'hi ha actuat.</li>";}
+      if($alertes[1]["pHmes"][0]){echo "<li>El pH està massa alt i no s'hi ha actuat.</li>";}
+?>
         </ul>
     </div>
 <?php } ?>

@@ -43,13 +43,31 @@ function alertes(){
     $alertes = array(
         false,
         array(
-            "antialga" => false,
+            // alerta => array(t/f,dies)
+            "antialga" => array(false,0),
+            "pHmenys" => array(false,0),
+            "pHmes" => array(false,0)
         )
     );
     $sql_alerta_antialga = "SELECT DATEDIFF(CURDATE(),data_hora) FROM piscinaAccio WHERE antialga IS NOT NULL ORDER BY data_hora DESC LIMIT 1;";
     $qry_alerta_antialga = mysqli_query($_SESSION['DB'], $sql_alerta_antialga);
     $alerta_antialga = mysqli_fetch_array($qry_alerta_antialga)[0];
-    if($alerta_antialga>7){$alertes[0]=true;$alertes[1]["antialga"]=true;}
+    if($alerta_antialga>7){$alertes[0]=true;$alertes[1]["antialga"]=array(true,$alerta_antialga);}else{$alertes[1]["antialga"]=array(false,$alerta_antialga);}
+
+    $sql_ultima_ph = "SELECT ph, DATE(data_hora) FROM piscinaControl WHERE ph IS NOT NULL ORDER BY data_hora DESC LIMIT 1";
+    $qry_ultima_ph = mysqli_query($_SESSION['DB'], $sql_ultima_ph);
+    $ultima_ph = mysqli_fetch_array($qry_ultima_ph);
+    if($ultima_ph[0]<6.8){
+        $sql_phmenys_accio = "SELECT DATEDIFF('".$ultima_ph[1]."',data_hora) FROM piscinaAccio WHERE ph<0 ORDER BY data_hora DESC LIMIT 1";
+        $qry_phmenys_accio = mysqli_query($_SESSION['DB'],$sql_phmenys_accio);
+        $phmenys_accio = mysqli_fetch_array($qry_phmenys_accio)[0];
+        if($phmenys_accio>1 OR $phmenys_accio==NULL){$alertes[0]=true;$alertes[1]["pHmenys"]=array(true,$phmenys_accio);}else{$alertes[1]["pHmenys"]=array(false,$phmenys_accio);}
+    }elseif($ultima_ph[0]>7.8){
+        $sql_phmes_accio = "SELECT DATEDIFF('".$ultima_ph[1]."',data_hora) FROM piscinaAccio WHERE ph>0 ORDER BY data_hora DESC LIMIT 1";
+        $qry_phmes_accio = mysqli_query($_SESSION['DB'],$sql_phmes_accio);
+        $phmes_accio = mysqli_fetch_array($qry_phmes_accio)[0];
+        if($phmes_accio>1 OR $phmes_accio==NULL){$alertes[0]=true;$alertes[1]["pHmes"]=array(true,$phmes_accio);}else{$alertes[1]["pHmes"]=array(true,$phmes_accio);}
+    }
 
     return $alertes;
 
