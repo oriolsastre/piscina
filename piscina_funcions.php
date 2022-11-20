@@ -61,12 +61,12 @@ function alertes(){
         $sql_phmenys_accio = "SELECT DATEDIFF('".$ultima_ph[1]."',data_hora) FROM piscinaAccio WHERE ph<0 ORDER BY data_hora DESC LIMIT 1";
         $qry_phmenys_accio = mysqli_query($_SESSION['DB'],$sql_phmenys_accio);
         $phmenys_accio = mysqli_fetch_array($qry_phmenys_accio)[0];
-        if($phmenys_accio>1 OR $phmenys_accio==NULL){$alertes[0]=true;$alertes[1]["pHmenys"]=array(true,$phmenys_accio);}else{$alertes[1]["pHmenys"]=array(false,$phmenys_accio);}
+        if($phmenys_accio>5 OR $phmenys_accio==NULL){$alertes[0]=true;$alertes[1]["pHmenys"]=array(true,$phmenys_accio);}else{$alertes[1]["pHmenys"]=array(false,$phmenys_accio);}
     }elseif($ultima_ph[0]>7.8){
         $sql_phmes_accio = "SELECT DATEDIFF('".$ultima_ph[1]."',data_hora) FROM piscinaAccio WHERE ph>0 ORDER BY data_hora DESC LIMIT 1";
         $qry_phmes_accio = mysqli_query($_SESSION['DB'],$sql_phmes_accio);
         $phmes_accio = mysqli_fetch_array($qry_phmes_accio)[0];
-        if($phmes_accio>1 OR $phmes_accio==NULL){$alertes[0]=true;$alertes[1]["pHmes"]=array(true,$phmes_accio);}else{$alertes[1]["pHmes"]=array(true,$phmes_accio);}
+        if($phmes_accio>5 OR $phmes_accio==NULL){$alertes[0]=true;$alertes[1]["pHmes"]=array(true,$phmes_accio);}else{$alertes[1]["pHmes"]=array(true,$phmes_accio);}
     }
 
     return $alertes;

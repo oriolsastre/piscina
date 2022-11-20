@@ -211,6 +211,10 @@ div.alertaUrgent {
 	text-align: left;
 	position: relative;
 }
+.alertaUrgent h2 {
+	text-shadow: 2px 0 #f00, -2px 0 #f00, 0 2px #f00, 0 -2px #f00,
+	1px 1px #f00, -1px -1px #f00, 1px -1px #f00, -1px 1px #f00;
+}
 
 div.tancar {
 	position: absolute;
