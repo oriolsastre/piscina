@@ -73,4 +73,10 @@ function alertes(){
     return $alertes;
 
 }
+
+function esSafari(){
+    //la pàgina de control no va bé amb Safari.
+    $ua = $_SERVER['HTTP_USER_AGENT']; 
+    return preg_match("/^((?!chrome).)*safari/i",$ua) && stripos($ua,' version/')!==false && stripos($ua,'mqqbrowser')===false;
+}
 ?>

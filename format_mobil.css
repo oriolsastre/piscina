@@ -5,6 +5,8 @@ body {
 	margin-right: 5px;
 	margin-left: 5px;
 	font-size: 22px;
+	max-width: 1000px;
+	text-align: center;
 }
 
 h1,h2,h3 {

@@ -39,6 +39,7 @@ exit();
 }
 piscinaHead("Estat de l'aigua"); ?>
 <body>
+<script src="control.js"></script>
 <?php piscinaHeadUser(); ?>
 <div style="text-align: center; margin-left: auto; margin-right:auto;">
     <h1 class="principal">Estat de l'aigua</h1>
@@ -52,31 +53,39 @@ piscinaHead("Estat de l'aigua"); ?>
     </div>
 <?php
     }
+    if(esSafari()){
+?>
+    <div class="avisTemporal">
+        <h2>Avís</h2>
+        <p>Aquesta pàgina no funciona bé amb Safari. Obra-la amb Chrome o Firefox.</p>
+    </div>
+<?php
+    }
+   
 ?>
     <table class="control">
         <tr>
             <td style="width: 50%;">
-                <div class="control" id="pHClor" onmouseup="document.getElementById('formPHClor').style.display = ''; document.getElementById('formAigua').style.display = 'none';">
+                <div class="control" id="pHClor" onmouseup="formulariControls(true,true,false)">
                     <div class="controlText"><h2>pH i Clor</h2></div>
                 </div>
             </td><td>
-                <div class="control" id="aigua" onmouseup="document.getElementById('formPHClor').style.display = 'none'; document.getElementById('formAigua').style.display = '';">
+                <div class="control" id="aigua" onmouseup="formulariControls(true,false,true)">
                     <div class="controlText"><h2>Temperatura, transparència, fons</h2></div>
                 </div>
             </td>
         </tr><tr>
             <td colspan="2">
-                <div class="control" id="total" onmouseup="document.getElementById('formPHClor').style.display = 'none'; document.getElementById('formAigua').style.display = 'none';">
+                <div class="control" id="total" onmouseup="formulariControls(true,true,true)">
                     <div class="controlText"><h2>Control múltiple</h2></div>
                 </div>
             </td>
         </tr>
     </table>
-    <div class="form" id="formPHClor" style="display: none;">
-        <h3>Control de Clor i pH</h3>
+    <div class="form" id="formControl" style="display: none;">
         <form method="post" action="control.php?form=add">
             <table class="formTable">
-                <tr>
+                <tr id="formpH" style="display: none;">
                     <td><b>pH<b></td>
                     <td><select name="pH">
                         <option value="8.5">8.2&gt;</option>
@@ -90,7 +99,7 @@ piscinaHead("Estat de l'aigua"); ?>
                         <option value="6.8">6.8</option>
                         <option value="6.5">&lt;6.8</option>
                     </select></td>
-                </tr><tr>
+                </tr><tr id="formClor" style="display: none;">
                     <td><b>Clor</b></td>
                     <td><select name="clor">
                         <option value="3.0">3.0</option>
@@ -101,17 +110,7 @@ piscinaHead("Estat de l'aigua"); ?>
                         <option value="0.2">0.2</option>
                         <option value="0">0</option>
                     </select></td>
-                </tr>
-            </table>
-            <input type="submit" value="Enviar">
-            <input type="button" value="Cancelar" onmouseup="document.getElementById('formPHClor').style.display = 'none';">
-        </form>
-    </div>
-    <div class="form" id="formAigua" style="display: none;">
-        <h3>Temperatura, transparència i fons</h3>
-        <form method="post" action="control.php?form=add">
-            <table class="formTable">
-                <tr>
+                </tr><tr id="formTemp" style="display: none;">
                     <td><b>Temperatura de l'aigua</b></td>
                     <td><select name="temperatura">
                         <option value="null">---</option>
@@ -124,7 +123,7 @@ for($temp=29;$temp>15;$temp--){
 ?>
                         <option value=15>&le;15</option>
                     </select></td>
-                </tr><tr>
+                </tr><tr id="formTrans" style="display: none;">
                     <td><b>Transparència de l'aigua</b></td>
                     <td><select name="transparent">
                         <option value="null">---</option>
@@ -134,7 +133,7 @@ for($temp=29;$temp>15;$temp--){
                         <option value=2>2: Aigua força transparent</option>
                         <option value=1>1: Aigua transparent</option>
                     </select></td>
-                </tr><tr>
+                </tr><tr id="formFons" style="display: none;">
                     <td><b>Fons de la piscina</b></td>
                     <td><select name="fons">
                         <option value="null">---</option>
@@ -147,7 +146,7 @@ for($temp=29;$temp>15;$temp--){
                 </tr>
             </table>
             <input type="submit" value="Enviar">
-            <input type="button" value="Cancelar" onmouseup="document.getElementById('formAigua').style.display = 'none';">
+            <input type="button" value="Cancelar" onmouseup="formulariControls(false,false,false)">
         </form>
     </div>
 </div>
