@@ -5,7 +5,7 @@ function piscinaHead($titol){
     <meta charset="UTF8">
 	<meta name="viewport" content="width=device-width"/>
 	<title><?php echo $titol; ?></title>
-	<link rel="icon" type="image/ico" href="logo.ico"/>
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏊</text></svg>">
     <link rel="stylesheet" type="text/css" href="format_mobil.css">
     <script src="https://kit.fontawesome.com/5d896814dd.js" crossorigin="anonymous"></script>
 </head>

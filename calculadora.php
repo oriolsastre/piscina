@@ -12,9 +12,11 @@ include_once("piscina_funcions.php");
 <h1 class="principal">Calculadora</h1>
 <p>Quant producte haig de tirar a la piscina? El resultat és orientatiu.</p>
 <select>
-<option selected>-----</option>
+    <option selected>-----</option>
     <option onmouseup="">CTX-500 pH plus</option>
+    <option onmouseup="">CTX-400 pH minus</option>
 </select>
+
 </div>
 </body>
 </html>
