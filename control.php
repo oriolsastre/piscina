@@ -23,7 +23,9 @@ exit();
         $qry_ultim_clorpH = mysqli_query($dbcnx, $sql_ultim_clorpH);
         $ultim_clorpH = new DateTime(mysqli_fetch_array($qry_ultim_clorpH)[0]);
         $clorpH_diff = $ultim_clorpH->diff(new DateTime($data_hora));
-        $horesClorPh = intval($clorpH_diff->format('%h'));
+
+        $horesClorPh = $clorpH_diff->format('%h');
+        $horesClorPh += ($clorpH_diff->days)*24;
     }
 
     $sql_insert_control = "INSERT INTO piscinaControl SET

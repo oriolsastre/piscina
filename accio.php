@@ -11,12 +11,13 @@ if(!$sessio){ ?>
     elseif($_POST['pHmes']=='null' AND $_POST['pHmenys']=='1'){$pH=-1;}
     elseif($_POST['pHmes']=='null' AND $_POST['pHmenys']=='null'){$pH='NULL';}
 
-    $sql_insert_accio = "INSERT INTO piscinaControl SET
+    $sql_insert_accio = "INSERT INTO piscinaAccio SET
         ph=$pH, clor =".$_POST['clor'].", antialga = ".$_POST['antialga'].", fluoculant = ".$_POST['fluoculant'].",
         aspirar = ".$_POST['aspirar'].", alcali = ".$_POST['alcali'].", aglutinant = ".$_POST['aglutinant'].",
         usuari = ".$_SESSION['userID'].";";
     
-    $qry_inser_accio = mysqli_query($dbcnx, $sql_insert_accio);
+    $qry_insert_accio = mysqli_query($dbcnx, $sql_insert_accio);
+    if(!$qry_insert_accio){echo mysqli_error($dbcnx);}
 }
 include_once("piscina_funcions.php");
 $llistaControls = array(
