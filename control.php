@@ -123,7 +123,7 @@ for($temp=29;$temp>5;$temp--){
 <?php
 }
 ?>
-                        <option value=15>&le;5</option>
+                        <option value=5>&le;5</option>
                     </select></td>
                 </tr><tr id="formTrans" style="display: none;">
                     <td><b>Transparència de l'aigua</b></td>
