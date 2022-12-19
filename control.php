@@ -117,13 +117,13 @@ piscinaHead("Estat de l'aigua"); ?>
                     <td><select name="temperatura">
                         <option value="null">---</option>
                         <option value=30>30&ge;</option><?php
-for($temp=29;$temp>15;$temp--){
+for($temp=29;$temp>5;$temp--){
 ?>
                         <option value=<?php echo $temp; ?>><?php echo $temp; ?></option>
 <?php
 }
 ?>
-                        <option value=15>&le;15</option>
+                        <option value=15>&le;5</option>
                     </select></td>
                 </tr><tr id="formTrans" style="display: none;">
                     <td><b>Transparència de l'aigua</b></td>
